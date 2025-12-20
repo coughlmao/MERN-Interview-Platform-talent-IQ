@@ -9,7 +9,7 @@ if (!apiKey || !apiSecret) {
   throw new Error("Stream API key and secret must be provided");
 }
 
-export const chatClient = new StreamChat.getInstance(apiKey, apiSecret);
+export const chatClient = StreamChat.getInstance(apiKey, apiSecret);
 
 export const upsertStreamUser = async (userData) => {
   try {
