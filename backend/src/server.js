@@ -7,8 +7,8 @@ import { clerkMiddleware } from "@clerk/express";
 import ENV from "./lib/env.js";
 import connectDB from "./lib/db.js";
 import { inngest, functions } from "./lib/inngest.js";
-import { protectRoute } from "./middlewares/protectRoute.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import sessionRoutes from "./routes/sessionRoutes.js";
 
 const app = express();
 const PORT = ENV.PORT || 3000;
@@ -35,6 +35,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use('/api/chats', chatRoutes)
+app.use('/api/sessions', sessionRoutes)
 
 // make app ready for deployment
 if (ENV.NODE_ENV === "production") {
