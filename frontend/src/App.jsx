@@ -1,4 +1,3 @@
-import "./App.css";
 import {
   SignedIn,
   SignedOut,
@@ -6,11 +5,14 @@ import {
   SignOutButton,
   UserButton,
 } from "@clerk/clerk-react";
+import { Toaster } from "react-hot-toast";
+import { Routes } from "react-router";
 
 function App() {
   return (
     <>
-      <h1>Welcome to the app</h1>
+      <h1 className="text-red-500">Welcome to the app</h1>
+      <button className="btn btn-primary">Click me</button>
 
       <SignedOut>
         <SignInButton mode="modal" />
@@ -21,6 +23,7 @@ function App() {
       </SignedIn>
 
       <UserButton />
+      <Toaster toastOptions={{ duration: 3000 }} />
     </>
   );
 }
