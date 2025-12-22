@@ -1,28 +1,28 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignOutButton,
-  UserButton,
-} from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 import { Toaster } from "react-hot-toast";
-import { Routes } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
+
+import HomePage from "./pages/HomePage.jsx";
+import DashboardPage from "./pages/DashboardPage.jsx";
 
 function App() {
+  // Check if user is signed in
+  const { isSignedIn, isLoaded } = useUser();
+
+  if (!isLoaded) return null; // get rid of the flickering effect for auth state
+
   return (
     <>
-      <h1 className="text-red-500">Welcome to the app</h1>
-      <button className="btn btn-primary">Click me</button>
-
-      <SignedOut>
-        <SignInButton mode="modal" />
-      </SignedOut>
-
-      <SignedIn>
-        <SignOutButton />
-      </SignedIn>
-
-      <UserButton />
+      <Routes>
+        <Route
+          path="/"
+          element={!isSignedIn ? <HomePage /> : <Navigate to={"/dashboard"} />}
+        />
+        <Route
+          path="/dashboard"
+          element={isSignedIn ? <DashboardPage /> : <Navigate to={"/"} />}
+        />
+      </Routes>
       <Toaster toastOptions={{ duration: 3000 }} />
     </>
   );
