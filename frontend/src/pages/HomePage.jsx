@@ -101,18 +101,26 @@ const HomePage = () => {
             </div>
 
             {/* Statistics */}
-            <div className="stats stats-vertical lg:stats-horizontal bg-base-100 shadown-lg">
-              <div className="stat">
-                <div className="stat-value text-primary">10K+</div>
-                <div className="stat-title">Active Users</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value text-secondary">50K+</div>
-                <div className="stat-title">Sessions</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value text-accent">99.9%</div>
-                <div className="stat-title">Uptime</div>
+            <div className="flex w-full lg:w-auto justify-center lg:justify-start">
+              <div className="stats stats-vertical lg:stats-horizontal bg-base-100 shadow-lg w-full max-w-full lg:w-auto lg:max-w-none">
+                <div className="stat flex flex-row items-center justify-between lg:flex-col lg:items-start">
+                  <div className="stat-value text-primary">10K+</div>
+                  <div className="stat-title text-sm lg:text-xs text-right lg:text-left">
+                    Active Users
+                  </div>
+                </div>
+                <div className="stat flex flex-row items-center justify-between lg:flex-col lg:items-start">
+                  <div className="stat-value text-secondary">50K+</div>
+                  <div className="stat-title text-sm lg:text-xs text-right lg:text-left">
+                    Sessions
+                  </div>
+                </div>
+                <div className="stat flex flex-row items-center justify-between lg:flex-col lg:items-start">
+                  <div className="stat-value text-accent">99.9%</div>
+                  <div className="stat-title text-sm lg:text-xs text-right lg:text-left">
+                    Uptime
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -153,8 +161,10 @@ const HomePage = () => {
                 interviews
               </p>
             </div>
+          </div>
 
-            {/* Feature 2 */}
+          {/* Feature 2 */}
+          <div className="card bg-base-100 shadow-xl">
             <div className="card-body items-center text-center">
               <div className="size-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
                 <Code2Icon className="size-8 text-primary" />
@@ -165,8 +175,10 @@ const HomePage = () => {
                 language support
               </p>
             </div>
+          </div>
 
-            {/* Feature 3 */}
+          {/* Feature 3 */}
+          <div className="card bg-base-100 shadow-xl">
             <div className="card-body items-center text-center">
               <div className="size-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
                 <UsersIcon className="size-8 text-primary" />
