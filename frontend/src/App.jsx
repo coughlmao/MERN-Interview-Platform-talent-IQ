@@ -4,8 +4,10 @@ import { Routes, Route, Navigate } from "react-router";
 
 import HomePage from "./pages/HomePage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
+import ProblemsPage from "./pages/ProblemsPage.jsx";
 
 function App() {
+  
   // Check if user is signed in
   const { isSignedIn, isLoaded } = useUser();
 
@@ -22,6 +24,7 @@ function App() {
           path="/dashboard"
           element={isSignedIn ? <DashboardPage /> : <Navigate to={"/"} />}
         />
+        <Route path="/problems" element={<ProblemsPage />} />
       </Routes>
       <Toaster toastOptions={{ duration: 3000 }} />
     </>
