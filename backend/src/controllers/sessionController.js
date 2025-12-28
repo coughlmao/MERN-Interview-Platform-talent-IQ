@@ -135,10 +135,10 @@ export async function endSession(req, res) {
     if (session.status === "completed")
       return res.status(400).json({ message: "Session is already completed" });
     // delete Stream video-call
-    const call = streamClient.video.call("default".session.callId);
+    const call = streamClient.video.call("default", session.callId);
     await call.delete({ hard: true });
     // delete Stream chat-channel
-    const channel = chatClient.channel("messagimg", session.callId);
+    const channel = chatClient.channel("messaging", session.callId);
     session.status = "completed";
     session.save();
     await channel.delete();

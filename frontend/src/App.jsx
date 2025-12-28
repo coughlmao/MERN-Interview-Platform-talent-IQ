@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import ProblemsPage from "./pages/ProblemsPage.jsx";
 import ProblemPage from "./pages/ProblemPage.jsx";
+import SessionPage from "./pages/SessionPage.jsx";
 
 function App() {
   // Check if user is signed in
@@ -31,6 +32,10 @@ function App() {
         <Route
           path="/problems/:id"
           element={isSignedIn ? <ProblemPage /> : <Navigate to={"/"} />}
+        />
+        <Route
+          path="/sessions/:id"
+          element={isSignedIn ? <SessionPage /> : <Navigate to={"/"} />}
         />
       </Routes>
       <Toaster toastOptions={{ duration: 3000 }} />
