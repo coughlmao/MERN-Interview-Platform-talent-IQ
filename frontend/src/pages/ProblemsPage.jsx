@@ -8,13 +8,13 @@ import { getDifficultyBadgeClass } from "../lib/utils.js";
 const ProblemsPage = () => {
   const problems = Object.values(PROBLEMS);
 
-  const easyProblemsCounts = problems.filter(
+  const easyProblemsCount = problems.filter(
     (p) => p.difficulty === "Easy"
   ).length;
-  const mediumProblemsCounts = problems.filter(
+  const mediumProblemsCount = problems.filter(
     (p) => p.difficulty === "Medium"
   ).length;
-  const hardProblemsCounts = problems.filter(
+  const hardProblemsCount = problems.filter(
     (p) => p.difficulty === "Hard"
   ).length;
 
@@ -45,14 +45,16 @@ const ProblemsPage = () => {
                   {/* Left Side */}
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <div className="size-12 rounded-lg bg-primary/10 flex items-center justify-center ">
-                        <Code2Icon className="size-6 text-primary" />
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center ">
+                        <Code2Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <h2 className="text-xl font-bold">{problem.title}</h2>
+                          <h2 className="text-base sm:text-xl font-bold">
+                            {problem.title}
+                          </h2>
                           <span
-                            className={`badge ${getDifficultyBadgeClass(
+                            className={`badge badge-sm text-xs sm:text-sm ${getDifficultyBadgeClass(
                               problem.difficulty
                             )}`}
                           >
@@ -64,15 +66,15 @@ const ProblemsPage = () => {
                         </p>
                       </div>
                     </div>
-                    <p className="text-base-content/80 mb-3">
+                    <p className="text-sm sm:text-base text-base-content/80 mb-3">
                       {problem.description.text}
                     </p>
                   </div>
 
                   {/* Right Side */}
                   <div className="flex items-center gap-2 text-primary">
-                    <span className="font-md">Solve</span>
-                    <ChevronRightIcon className="size-5" />
+                    <span className="font-md text-sm sm:text-base">Solve</span>
+                    <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                 </div>
               </div>
@@ -80,31 +82,35 @@ const ProblemsPage = () => {
           ))}
         </div>
 
-        {/* TODO: Make Stats responsive -> similar to HomePage stats */}
         {/* Stats Footer */}
         <div className="mt-12 card bg-base-100 shadow-lg">
           <div className="card-body">
-            <div className="stats stats-vertical lg:stats-horizontal">
+            <div className="stats stats-horizontal">
               <div className="stat">
                 <div className="stat-title">Total Problems</div>
-                <div className="stat-value text-primary">{problems.length}</div>
+                <div className="stat-value text-primary text-2xl sm:text-4xl">
+                  {problems.length}
+                </div>
               </div>
+
               <div className="stat">
                 <div className="stat-title">Easy</div>
-                <div className="stat-value text-success">
-                  {easyProblemsCounts}
+                <div className="stat-value text-success text-2xl sm:text-4xl">
+                  {easyProblemsCount}
                 </div>
               </div>
+
               <div className="stat">
                 <div className="stat-title">Medium</div>
-                <div className="stat-value text-warning">
-                  {mediumProblemsCounts}
+                <div className="stat-value text-warning text-2xl sm:text-4xl">
+                  {mediumProblemsCount}
                 </div>
               </div>
+
               <div className="stat">
                 <div className="stat-title">Hard</div>
-                <div className="stat-value text-error">
-                  {hardProblemsCounts}
+                <div className="stat-value text-error text-2xl sm:text-4xl">
+                  {hardProblemsCount}
                 </div>
               </div>
             </div>
