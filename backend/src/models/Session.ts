@@ -1,6 +1,11 @@
-import mongoose from "mongoose";
+import mongoose, {
+  InferSchemaType,
+  HydratedDocument,
+  Schema,
+  Model,
+} from "mongoose";
 
-const sessionSchema = new mongoose.Schema(
+const sessionSchema = new Schema(
   {
     problemTitle: {
       type: String,
@@ -26,15 +31,23 @@ const sessionSchema = new mongoose.Schema(
       enum: ["active", "completed"],
       default: "active",
     },
+    // Stream video-call id
     callId: {
-      // Stream video-call id
       type: String,
       default: "",
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-const Session = mongoose.model("Session", sessionSchema);
+type Session = InferSchemaType<typeof sessionSchema>;
 
-export default Session;
+type SessionDocument = HydratedDocument<Session>;
+
+const SessionModel: Model<Session> = mongoose.model<Session>(
+  "Session",
+  sessionSchema,
+);
+
+export default SessionModel;
+export type { Session, SessionDocument };
