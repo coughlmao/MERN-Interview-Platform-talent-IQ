@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 
 import { protectRoute } from "../middlewares/protectRoute.js";
 import {
@@ -10,7 +10,7 @@ import {
   endSession,
 } from "../controllers/sessionController.js";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post("/", protectRoute, createSession);
 router.get("/active", protectRoute, getActiveSessions);

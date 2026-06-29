@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": "true",
+  "workspaces":[
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "build": "npm install --prefix backend && npm install --prefix frontend --also=dev && npm run build --prefix frontend",
-    "start": "npm run start --prefix backend"
+    "build": "npm run build --workspaces",
+    "start": "npm run start --workspace=backend"
   },
   "repository": {
     "type": "git",
@@ -14,7 +19,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/coughlmao/MERN-Interview-Platform-talent-IQ/issues"
   },
